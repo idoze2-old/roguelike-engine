@@ -68,7 +68,7 @@ namespace Project
         {
             ticks++;
             //BG.Print(6, 6, "#", Color.White, Color.Transparent);
-            //Recall
+            //Reca
             #region KeyHandling
             if (SadConsole.Global.KeyboardState.IsKeyReleased(Microsoft.Xna.Framework.Input.Keys.F5))
             {
