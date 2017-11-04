@@ -1,0 +1,7 @@
+E:\00 Project\ProjectSQL_100\ProjectSQL_100\bin\Debug\ProjectSQL_100.exe.config
+E:\00 Project\ProjectSQL_100\ProjectSQL_100\bin\Debug\ProjectSQL_100.exe
+E:\00 Project\ProjectSQL_100\ProjectSQL_100\bin\Debug\ProjectSQL_100.pdb
+E:\00 Project\ProjectSQL_100\ProjectSQL_100\obj\Debug\ProjectSQL_100.exe
+E:\00 Project\ProjectSQL_100\ProjectSQL_100\obj\Debug\ProjectSQL_100.pdb
+E:\00 Project\ProjectSQL_100\ProjectSQL_100\bin\Debug\GameDB.accdb
+E:\00 Project\ProjectSQL_100\ProjectSQL_100\obj\Debug\ProjectSQL_100.csprojResolveAssemblyReference.cache
