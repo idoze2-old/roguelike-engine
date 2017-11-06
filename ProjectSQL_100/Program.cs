@@ -49,26 +49,27 @@ namespace Project
             // Dispose When Game Ends [Saves RAM]
             SadConsole.Game.Instance.Dispose();
         }
+        #endregion
+        #region Game Casting
         private static void Init()
         {
             ticks = 0;
             SadConsole.Settings.ToggleFullScreen();
-            BG = new Engine.ScrollConsole(Width*2,Height*2,Width,Height);
+            BG = new Engine.ScrollConsole(Width * 2, Height * 2, Width, Height);
             BG.FillWithRandomGarbage();
-            BG.Fill(Color.FromNonPremultiplied(127, 127, 127, 127), Color.FromNonPremultiplied(0, 255, 255, 127),null);
+            BG.Fill(Color.FromNonPremultiplied(127, 127, 127, 127), Color.FromNonPremultiplied(0, 255, 255, 127), null);
             PlayerConsole = new Console(1, 1);
             PlayerConsole.Position = new Point(Width / 2, Height / 2);
             BG.Children.Add(PlayerConsole);
             PlayerConsole.Print(0, 0, "@", Color.Yellow, Color.Transparent);
             SadConsole.Global.CurrentScreen = BG;
-        }
+        } 
         #endregion
         #region Game Logic
         private static void Update(GameTime time)
         {
             ticks++;
             //BG.Print(6, 6, "#", Color.White, Color.Transparent);
-            //damm
             #region KeyHandling
             if (SadConsole.Global.KeyboardState.IsKeyReleased(Microsoft.Xna.Framework.Input.Keys.F5))
             {
