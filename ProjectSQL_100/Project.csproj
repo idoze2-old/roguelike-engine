@@ -55,6 +55,8 @@
     <Compile Include="EngineClasses\Engine.cs" />
     <Compile Include="DAL\oledbhelper.cs" />
     <Compile Include="GameComponents\Classes.cs" />
+    <Compile Include="GameComponents\MainMenu.cs" />
+    <Compile Include="GameComponents\Map.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DAL\usermethods.cs" />

@@ -42,3 +42,5 @@ E:\00 Project\ProjectSQL_100\ProjectSQL_100\obj\Debug\Project.csprojResolveAssem
 D:\00 Project\ProjectSQL_100\ProjectSQL_100\obj\Debug\Project.csprojResolveAssemblyReference.cache
 E:\00 Project\ProjectSQL_100\ProjectSQL_100\bin\Debug\Cheepicus_12x12.png
 E:\00 Project\ProjectSQL_100\ProjectSQL_100\bin\Debug\Cheepicus12.font
+D:\00 Project\ProjectSQL_100\ProjectSQL_100\bin\Debug\Cheepicus_12x12.png
+D:\00 Project\ProjectSQL_100\ProjectSQL_100\bin\Debug\Cheepicus12.font
