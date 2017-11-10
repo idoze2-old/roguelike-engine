@@ -83,6 +83,8 @@ namespace Project.Components
         /// <param name="data"></param>
         public void Load(DataTable data)
         {
+            objects = new List<MapObject>[int.Parse(data.Rows[0]["PosZ"].ToString())];
+
             foreach (DataRow item in data.Rows)
             {
                 int id,x, y, z;
@@ -96,6 +98,8 @@ namespace Project.Components
         }
         public void Add(MapObject Obj)
         {
+            if (objects[Obj.Z] == null)
+                objects[Obj.Z] = new List<MapObject>();
             objects[Obj.Z].Add(Obj);
         }
     }

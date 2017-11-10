@@ -61,7 +61,8 @@ namespace Project
             BG.Children.Add(PlayerConsole);
             PlayerConsole.Print(0, 0, "@", Color.Yellow, Color.Transparent);
             SadConsole.Global.CurrentScreen = BG;
-            //mainmap.Load(oledbhelper.GetTable("Select "));
+            mainmap = new Map(0, 20, 20);
+            mainmap.Load(oledbhelper.GetTable("Select "));
             //mainmap.Add(dirt);
         }
         #endregion
