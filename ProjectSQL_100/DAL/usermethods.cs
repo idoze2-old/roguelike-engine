@@ -11,6 +11,7 @@ namespace DAL
 {
     class usermethods
     {
+        
         public static DataTable GetAll()
         {
             return oledbhelper.GetTable("Select * From Character");

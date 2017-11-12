@@ -7,7 +7,7 @@ using System.Data;
 
 namespace Project.Components
 {
-    class Component
+    public class Component
     {
         private int id;
         public int ID
@@ -22,13 +22,20 @@ namespace Project.Components
                 id = value;
             }
         }
+        public Component(int id)
+        {
+            this.id = id;
+        }
 
     }
-    class SaveFile : Component
+    public class SaveFile : Component
     {
+        public SaveFile(int id):base(id)
+        {
 
+        }
     }
-    class Map : Component
+    public class Map : Component
     {
         private int width;
         public int Width
@@ -57,28 +64,33 @@ namespace Project.Components
             }
         }
         private List<MapObject>[] objects;
-        public MapObject GetObject(int X, int Y, int Z)
+        public MapObject GetObject( int X, int Y, int Z)
         {
             try
             {
-                return objects[Z].Where(i=>((i.X==X)&&(i.Y==Y))).ToArray()[0];
+                return ((MapObject)objects[Z].Where(ob => ob.X == X && ob.Y == Y));
             }
             catch { throw; }
         }
-        public Map(int Width, int Height)
+        public Map(int id,int Width, int Height):base(id)
         {
             width = Width;
             height = Height;
         }
+        /// <summary>
+        /// Make Sure To Load The Map In Decs Order by Obj.Z
+        /// </summary>
+        /// <param name="data"></param>
         public void Load(DataTable data)
         {
             foreach (DataRow item in data.Rows)
             {
-                int x, y, z;
+                int id,x, y, z;
                 x = int.Parse(item["PosX"].ToString());
                 y = int.Parse(item["PosY"].ToString());
                 z = int.Parse(item["PosZ"].ToString());
-                MapObject current = new MapObject(x, y, z);
+                id = int.Parse(item["TileID"].ToString());
+                MapObject current = new MapObject(id,x, y, z);
                 Add(current);
             }
         }
@@ -87,7 +99,7 @@ namespace Project.Components
             objects[Obj.Z].Add(Obj);
         }
     }
-    class MapObject : Component
+    public class MapObject : Component
     {
         private int x, y, z;
         public int X
@@ -126,16 +138,16 @@ namespace Project.Components
                 z = value;
             }
         }
-        public MapObject(int X, int Y, int Z)
+        public MapObject(int id, int X, int Y, int Z) : base(id)
         {
             x = X;
             y = Y;
             z = Z;
         }
     }
-    class Tile : MapObject
+    public class Tile : MapObject
     {
-        public Tile(int x, int y, int z):base(x,y,z)
+        public Tile(int id,int x, int y, int z) : base(id,x, y, z)
         {
 
         }
