@@ -22,10 +22,12 @@ namespace Project
         public static int ticks = 0;
         public static Engine.ScrollConsole BG;
         public static Console PlayerConsole;
+        public static Components.Player Player;
         #endregion
         #region Entry Point
         static void Main(string[] args)
         {
+            //SQL();
             StartEngine();
         }
         #endregion
@@ -49,8 +51,8 @@ namespace Project
         private static void Init()
         {
             ticks = 0;
-            //SadConsole.Settings.ToggleFullScreen();
-            SadConsole.Global.CurrentScreen.Children.Add(new Components.MainMenu(Width, Height));
+            SadConsole.Settings.ToggleFullScreen();
+            SadConsole.Global.CurrentScreen.Children.Add(new Components.LoginScreen(Width, Height));
             #region GameConsoles
             #region BG
             BG = new Engine.ScrollConsole(Width * 2, Height * 2, Width, Height);
@@ -105,9 +107,18 @@ namespace Project
             #endregion
         }
         #endregion
-        public static void StartGame()
+        public static bool Login(string username, string password)
         {
-            SadConsole.Global.CurrentScreen = BG;
+            try
+            {
+                Player = new Components.Player()
+                SadConsole.Global.CurrentScreen = BG;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public static void SQL()
         {

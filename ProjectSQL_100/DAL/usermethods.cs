@@ -7,7 +7,7 @@ using System.Data.OleDb;
 using System.Data;
 using Oledb;
 
-namespace DAL
+namespace Project.DAL
 {
     class usermethods
     {
@@ -15,6 +15,10 @@ namespace DAL
         public static DataTable GetAll()
         {
             return oledbhelper.GetTable("Select * From Character");
+        }
+        public static Components.Player GetPlayer()
+        {
+            Components
         }
         public static void AddCharacter( int SaveFileID,string Name)
         {
