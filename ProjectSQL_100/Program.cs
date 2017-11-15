@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
-using Oledb;
 using Microsoft.Xna.Framework;
+using Oledb;
 // SadConsole Is A Monogame Based Console
 using Console = SadConsole.Console;
 
@@ -111,7 +110,7 @@ namespace Project
         {
             try
             {
-                Player = new Components.Player()
+                Player = DAL.GetPlayer(username, password);
                 SadConsole.Global.CurrentScreen = BG;
                 return true;
             }
@@ -120,6 +119,7 @@ namespace Project
                 return false;
             }
         }
+        #region SQLMode
         public static void SQL()
         {
             bool SQL = true;
@@ -187,6 +187,7 @@ namespace Project
                     }
                 }
             }
-        }
+        } 
+        #endregion
     }
 }

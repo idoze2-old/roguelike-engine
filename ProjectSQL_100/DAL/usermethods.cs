@@ -7,18 +7,27 @@ using System.Data.OleDb;
 using System.Data;
 using Oledb;
 
-namespace Project.DAL
+namespace Project
 {
-    class usermethods
+    static class DAL
     {
         
         public static DataTable GetAll()
         {
             return oledbhelper.GetTable("Select * From Character");
         }
-        public static Components.Player GetPlayer()
+        public static Components.Player GetPlayer(string username, string password)
         {
-            Components
+            try
+            {
+                DataTable Data = oledbhelper.GetTable("Select PlayerID,");
+                DataRow DataR = Data.Rows[0];
+                return new Components.Player((int.Parse(DataR["ID"].ToString())), DataR["Username"].ToString(), DataR["Password"].ToString());
+            }
+            catch
+            {
+                return null;
+            }
         }
         public static void AddCharacter( int SaveFileID,string Name)
         {
