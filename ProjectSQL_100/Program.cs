@@ -26,10 +26,10 @@ namespace Project
         #region Entry Point
         static void Main(string[] args)
         {
-            //SQL();
+            SQL();
             StartEngine();
         }
-        #endregion
+        #endregion 
         #region Engine Logic 
         static void StartEngine()
         {
@@ -50,8 +50,8 @@ namespace Project
         private static void Init()
         {
             ticks = 0;
-            SadConsole.Settings.ToggleFullScreen();
-            SadConsole.Global.CurrentScreen.Children.Add(new Components.LoginScreen(Width, Height));
+            //SadConsole.Settings.ToggleFullScreen();
+            SadConsole.Global.CurrentScreen.Children.Add(new Screen.Login(Width, Height));
             #region GameConsoles
             #region BG
             BG = new Engine.ScrollConsole(Width * 2, Height * 2, Width, Height);
@@ -130,7 +130,7 @@ namespace Project
             System.Console.ResetColor();
             while (SQL)
             {
-                System.Console.WriteLine("\n---------");
+                System.Console.WriteLine("---------");
                 System.Console.WriteLine(str);
                 System.Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.Write("> ");
@@ -145,7 +145,6 @@ namespace Project
                     else if (str.ToLower().Contains("select"))
                     {
                         System.Data.DataTable Table = oledbhelper.GetTable(str);
-                        System.Console.WriteLine("---START");
                         foreach (System.Data.DataColumn Col in Table.Columns)
                         {
                             System.Console.ForegroundColor = ConsoleColor.Cyan;
@@ -161,7 +160,6 @@ namespace Project
                             }
                             System.Console.Write("\n");
                         }
-                        System.Console.WriteLine("---END");
                     }
                     else
                     {
@@ -172,8 +170,9 @@ namespace Project
                     }
                     //System.Console.ReadLine();
                 }
-                catch
+                catch (Exception e)
                 {
+                    //throw e;
                     if (str == "")
                     {
                         SQL = false;
@@ -182,8 +181,9 @@ namespace Project
                     {
                         System.Console.ForegroundColor = ConsoleColor.Red;
                         System.Console.Write("Invalid. ");
+                        System.Console.WriteLine(e.Message);
                         System.Console.ResetColor();
-                        System.Console.ReadLine();
+                     //   System.Console.ReadLine();
                     }
                 }
             }

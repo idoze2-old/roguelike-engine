@@ -18,16 +18,11 @@ namespace Project
         }
         public static Components.Player GetPlayer(string username, string password)
         {
-            try
-            {
-                DataTable Data = oledbhelper.GetTable("Select PlayerID,");
+            
+                DataTable Data = oledbhelper.GetTable("Select PlayerID, Username,Password From Player Where Username=='"+username+"' AND Password=='"+password+"'");
                 DataRow DataR = Data.Rows[0];
                 return new Components.Player((int.Parse(DataR["ID"].ToString())), DataR["Username"].ToString(), DataR["Password"].ToString());
-            }
-            catch
-            {
-                return null;
-            }
+           
         }
         public static void AddCharacter( int SaveFileID,string Name)
         {
