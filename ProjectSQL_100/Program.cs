@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Oledb;
 // SadConsole Is A Monogame Based Console
 using Console = SadConsole.Console;
+using SadConsole;
 
 
 namespace Project
@@ -141,6 +142,20 @@ namespace Project
                     if (str == "")
                     {
                         SQL = false;
+                    }
+                    else if(str.ToLower().Contains("adduser"))
+                    {
+                        string UName = "";
+                        string PWord = "";
+                        for (int i = 0; i < 6; i++)
+                        {
+                            UName += (Global.Random.Next(10).ToString());
+                            PWord += (Global.Random.Next(10).ToString());
+                        }
+                        System.Console.ForegroundColor = ConsoleColor.Yellow;
+                            System.Console.Write(DAL.AddUser(UName,PWord)+"\n");
+                            System.Console.ResetColor();
+                        
                     }
                     else if (str.ToLower().Contains("select"))
                     {

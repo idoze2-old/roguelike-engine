@@ -33,7 +33,6 @@ namespace Oledb
             OleDbCommand command = new OleDbCommand();
             command.Connection = cn;
             command.CommandText = com;
-
             try
             {
                 command.ExecuteNonQuery();

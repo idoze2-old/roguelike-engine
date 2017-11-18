@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace Project.Screen
 {
-    internal class Login:ControlsConsole
+    internal class Login : ControlsConsole
     {
         SadConsole.Controls.InputBox UsernameInput;
         SadConsole.Controls.InputBox PasswordInput;
@@ -40,7 +40,6 @@ namespace Project.Screen
             LoginButton = new SadConsole.Controls.Button(5);
             LoginButton.Position = new Point(Width / 2 - LoginButton.Width / 2, Height / 2);
             LoginButton.ShowEnds = false;
-            LoginButton.IsEnabled = false;
             LoginButton.Text = "Login";
             LoginButton.TextAlignment = System.Windows.HorizontalAlignment.Center;
             Add(LoginButton);
@@ -50,7 +49,8 @@ namespace Project.Screen
                 {
                     if (!Program.Login(UsernameInput.Text, PasswordInput.Text))
                     {
-
+                        Print(LoginButton.Position.X, LoginButton.Position.Y + 1, "Username Or Password", Color.Red);
+                        Print(LoginButton.Position.X, LoginButton.Position.Y + 2, "Incorrect.", Color.Red);
                     }
                 }
             };
@@ -59,7 +59,7 @@ namespace Project.Screen
         public override void Update(TimeSpan time)
         {
             base.Update(time);
-            LoginButton.IsEnabled = ((PasswordInput.Text != "")&&(UsernameInput.Text != ""));
+            //LoginButton.IsEnabled = ((PasswordInput.Text != "")&&(UsernameInput.Text != ""));
         }
 
     }
