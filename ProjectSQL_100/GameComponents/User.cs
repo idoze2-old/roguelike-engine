@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Project.Components
 {
-    class Player:Component
+    class User:Component
     {
-        public Player(int PlayerID,string Username, string Password):base(PlayerID)
+        public User(int PlayerID,string Username, string Password):base(PlayerID)
         {
 
         }

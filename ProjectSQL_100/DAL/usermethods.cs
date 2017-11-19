@@ -16,17 +16,17 @@ namespace Project
         {
             return oledbhelper.GetTable("Select * From Character");
         }
-        public static Components.Player GetPlayer(string username, string password)
+        public static Components.User GetUser(string username, string password)
         {
-                DataTable Data = oledbhelper.GetTable("Select UserID, UName,PWord From User Where UName=='"+username+"' AND PWord=='"+password+"'");
+                DataTable Data = oledbhelper.GetTable("Select UserID, UName, PWord From Users Where UName='"+username+"' AND PWord='"+password+"'");
                 DataRow DataR = Data.Rows[0];
-                return new Components.Player((int.Parse(DataR["UserID"].ToString())), DataR["UName"].ToString(), DataR["PWord"].ToString());
+                return new Components.User((int.Parse(DataR["UserID"].ToString())), DataR["UName"].ToString(), DataR["PWord"].ToString());
         }
         public static String AddUser (string Username, string Password)
         {
             try
             {
-                string cmd = "INSERT INTO User (UName,PWord) Values ('" + Username + "','" + Password + "');";
+                string cmd = "INSERT INTO Users (UName,PWord) Values ('" + Username + "','" + Password + "');";
                 oledbhelper.Execute(cmd);
                 return "Successfuly Added User - " + Username + " With Password - " + Password + ".";
             }

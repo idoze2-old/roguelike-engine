@@ -22,7 +22,7 @@ namespace Project
         public static int ticks = 0;
         public static Engine.ScrollConsole BG;
         public static Console PlayerConsole;
-        public static Components.Player Player;
+        public static Components.User Player;
         #endregion
         #region Entry Point
         static void Main(string[] args)
@@ -111,12 +111,13 @@ namespace Project
         {
             try
             {
-                Player = DAL.GetPlayer(username, password);
+                Player = DAL.GetUser(username, password);
                 SadConsole.Global.CurrentScreen = BG;
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                throw e;
                 return false;
             }
         }
@@ -147,7 +148,7 @@ namespace Project
                     {
                         string UName = "";
                         string PWord = "";
-                        for (int i = 0; i < 6; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             UName += (Global.Random.Next(10).ToString());
                             PWord += (Global.Random.Next(10).ToString());
