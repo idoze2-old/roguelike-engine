@@ -16,11 +16,12 @@ namespace Project.Screen
         SadConsole.Controls.InputBox PasswordInput;
         SadConsole.Controls.Button LoginButton;
         SadConsole.Themes.InputBoxTheme InpTheme;
+        int ControlSize = 6;
         public Login(int Width, int Height) : base(Width, Height)
         {
             InpTheme = new SadConsole.Themes.InputBoxTheme();
             #region UserNameInput
-            UsernameInput = new SadConsole.Controls.InputBox(5);
+            UsernameInput = new SadConsole.Controls.InputBox(ControlSize);
             UsernameInput.Position = new Point(Width / 2 - UsernameInput.Width / 2, Height / 2 - 2);
             UsernameInput.Theme.Focused.Foreground = Color.White;
             UsernameInput.Theme.MouseOver.Foreground = Color.White;
@@ -30,14 +31,15 @@ namespace Project.Screen
             SadConsole.Global.FocusedConsoles.Set(this);
             #endregion
             #region PasswordInput
-            PasswordInput = new SadConsole.Controls.InputBox(5);
+            PasswordInput = new SadConsole.Controls.InputBox(ControlSize);
             PasswordInput.Position = new Point(Width / 2 - PasswordInput.Width / 2, Height / 2 - 1);
             PasswordInput.Theme = InpTheme;
             Add(PasswordInput);
             SadConsole.Global.FocusedConsoles.Set(this);
             #endregion
             #region LoginButton
-            LoginButton = new SadConsole.Controls.Button(5);
+            
+            LoginButton = new SadConsole.Controls.Button(ControlSize);
             LoginButton.Position = new Point(Width / 2 - LoginButton.Width / 2, Height / 2);
             LoginButton.ShowEnds = false;
             LoginButton.Text = "Login";

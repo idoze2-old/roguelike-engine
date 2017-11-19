@@ -22,7 +22,7 @@ namespace Project
         public static int ticks = 0;
         public static Engine.ScrollConsole BG;
         public static Console PlayerConsole;
-        public static Components.User Player;
+        public static Components.User User;
         #endregion
         #region Entry Point
         static void Main(string[] args)
@@ -45,14 +45,17 @@ namespace Project
             SadConsole.Game.Instance.Run();
             // Dispose When Game Ends [Saves RAM]
             SadConsole.Game.Instance.Dispose();
+           
         }
         #endregion
         #region Game Casting
         private static void Init()
         {
             ticks = 0;
-            //SadConsole.Settings.ToggleFullScreen();
+            SadConsole.Settings.ToggleFullScreen();
             SadConsole.Global.CurrentScreen.Children.Add(new Screen.Login(Width, Height));
+            SadConsole.Global.CurrentScreen.Children.Add(new Screen.Register(Width, Height));
+            Global.CurrentScreen.Children.Reverse();
             #region GameConsoles
             #region BG
             BG = new Engine.ScrollConsole(Width * 2, Height * 2, Width, Height);
@@ -111,13 +114,24 @@ namespace Project
         {
             try
             {
-                Player = DAL.GetUser(username, password);
+                User = DAL.GetUser(username, password);
                 SadConsole.Global.CurrentScreen = BG;
                 return true;
             }
             catch (Exception e)
             {
-                throw e;
+                return false;
+            }
+        }
+        public static bool Register(string username, string password)
+        {
+            try
+            {
+                
+                return DAL.AddUser(username, password); 
+            }
+            catch (Exception e)
+            {
                 return false;
             }
         }
