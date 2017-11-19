@@ -16,21 +16,29 @@ namespace Project
         {
             return oledbhelper.GetTable("Select * From Character");
         }
-        public static Components.User GetUser(string username, string password,bool AlertDupe)
+        public static Components.User GetUser(string username, string password)
         {
             DataTable Data = oledbhelper.GetTable("Select UserID, UName, PWord From Users Where UName='" + username + "' AND PWord='" + password + "'");
             DataRow DataR = Data.Rows[0];
             return new Components.User((int.Parse(DataR["UserID"].ToString())), DataR["UName"].ToString(), DataR["PWord"].ToString());
         }
-        public static Components.User GetUser(string username, string password)
+        public static bool UserExists(string Username, string Password)
         {
-            return GetUser(username, password, false);
+            try
+            {
+                GetUser(Username, Password);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public static bool AddUser(string Username, string Password)
         {
             try
             {
-                if (GetUser(Username, Password,true) == null)
+                if (!UserExists(Username, Password))
                 {
                     string cmd = "INSERT INTO Users (UName,PWord) Values ('" + Username + "','" + Password + "');";
                     oledbhelper.Execute(cmd);

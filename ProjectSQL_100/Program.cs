@@ -27,7 +27,7 @@ namespace Project
         #region Entry Point
         static void Main(string[] args)
         {
-            SQL();
+            //SQL();
             StartEngine();
         }
         #endregion 
@@ -52,9 +52,8 @@ namespace Project
         private static void Init()
         {
             ticks = 0;
-            SadConsole.Settings.ToggleFullScreen();
+            //SadConsole.Settings.ToggleFullScreen();
             SadConsole.Global.CurrentScreen.Children.Add(new Screen.Login(Width, Height));
-            SadConsole.Global.CurrentScreen.Children.Add(new Screen.Register(Width, Height));
             Global.CurrentScreen.Children.Reverse();
             #region GameConsoles
             #region BG
@@ -120,6 +119,7 @@ namespace Project
             }
             catch (Exception e)
             {
+                //throw e;
                 return false;
             }
         }

@@ -55,7 +55,7 @@ namespace Project.Screen
                     }
                     else
                     {
-                        Print(RegisterButton.Position.X, RegisterButton.Position.Y + 1, "User Created", Color.Green);
+                        parentConsole.Children.Remove(this);
                     }
                 }
             };

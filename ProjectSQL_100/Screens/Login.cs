@@ -15,10 +15,14 @@ namespace Project.Screen
         SadConsole.Controls.InputBox UsernameInput;
         SadConsole.Controls.InputBox PasswordInput;
         SadConsole.Controls.Button LoginButton;
+        SadConsole.Controls.Button RegisterButton;
         SadConsole.Themes.InputBoxTheme InpTheme;
         int ControlSize = 6;
         public Login(int Width, int Height) : base(Width, Height)
         {
+            textSurface.Font = Global.LoadFont(Program.Font).GetFont(Font.FontSizes.Two);
+            Width /= 2;
+            Height /= 2;
             InpTheme = new SadConsole.Themes.InputBoxTheme();
             #region UserNameInput
             UsernameInput = new SadConsole.Controls.InputBox(ControlSize);
@@ -53,15 +57,26 @@ namespace Project.Screen
                     {
                         Print(LoginButton.Position.X, LoginButton.Position.Y + 1, "Username Or Password", Color.Red);
                         Print(LoginButton.Position.X, LoginButton.Position.Y + 2, "Incorrect.", Color.Red);
+                        Add(RegisterButton);
                     }
                 }
             };
             #endregion
-        }
-        public override void Update(TimeSpan time)
-        {
-            base.Update(time);
-            //LoginButton.IsEnabled = ((PasswordInput.Text != "")&&(UsernameInput.Text != ""));
+            #region RegisterButton
+
+            RegisterButton = new SadConsole.Controls.Button(8);
+            RegisterButton.Position = new Point(LoginButton.Position.X, LoginButton.Position.Y+3);
+            RegisterButton.ShowEnds = false;
+            RegisterButton.Text = "Register";
+            RegisterButton.TextAlignment = System.Windows.HorizontalAlignment.Center;
+            RegisterButton.Click += (btn, args) =>
+            {
+                if ((PasswordInput.Text != "") && (UsernameInput.Text != ""))
+                {
+                    Global.CurrentScreen.Children.Add(new Screen.Register(base.Width, base.Height));
+                }
+            };
+            #endregion
         }
 
     }
