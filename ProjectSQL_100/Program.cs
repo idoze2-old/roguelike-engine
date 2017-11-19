@@ -13,7 +13,7 @@ using SadConsole;
 namespace Project
 {
     class Program
-    {
+    { 
         #region Globals
         public const int Width = 80;
         public const int Height = 25;

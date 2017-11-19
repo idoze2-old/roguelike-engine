@@ -18,20 +18,15 @@ namespace Project
         }
         public static Components.Player GetPlayer(string username, string password)
         {
-                DataTable Data = oledbhelper.GetTable("Select PlayerID, Username,Password From Player Where Username=='"+username+"' AND Password=='"+password+"'");
+                DataTable Data = oledbhelper.GetTable("Select UserID, UName,PWord From User Where UName=='"+username+"' AND PWord=='"+password+"'");
                 DataRow DataR = Data.Rows[0];
-                return new Components.Player((int.Parse(DataR["ID"].ToString())), DataR["Username"].ToString(), DataR["Password"].ToString());
-        }
-        public static void AddCharacter( int SaveFileID,string Name)
-        {
-            string str = "INSERT INTO MainCharacter (SaveFileID,CharacterName) VALUES ("+ SaveFileID.ToString() + ",'" + Name + "')";
-            oledbhelper.Execute(str);
+                return new Components.Player((int.Parse(DataR["UserID"].ToString())), DataR["UName"].ToString(), DataR["PWord"].ToString());
         }
         public static String AddUser (string Username, string Password)
         {
             try
             {
-                string cmd = "INSERT INTO Player (Username, Password) Values ('" + Username + "', '" + Password + "');";
+                string cmd = "INSERT INTO User (UName,PWord) Values ('" + Username + "','" + Password + "');";
                 oledbhelper.Execute(cmd);
                 return "Successfuly Added User - " + Username + " With Password - " + Password + ".";
             }

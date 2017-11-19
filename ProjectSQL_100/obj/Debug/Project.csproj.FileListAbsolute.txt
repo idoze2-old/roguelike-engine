@@ -88,7 +88,7 @@ C:\Users\idoze\Source\Repos\ProjectSQL_100\ProjectSQL_100\bin\Debug\SharpDX.XInp
 C:\Users\idoze\Source\Repos\ProjectSQL_100\ProjectSQL_100\bin\Debug\SharpDX.Direct3D9.dll
 C:\Users\idoze\Source\Repos\ProjectSQL_100\ProjectSQL_100\bin\Debug\MonoGame.Framework.xml
 C:\Users\idoze\Source\Repos\ProjectSQL_100\ProjectSQL_100\bin\Debug\SadConsole.xml
-C:\Users\idoze\Source\Repos\ProjectSQL_100\ProjectSQL_100\obj\Debug\Project.csprojResolveAssemblyReference.cache
 C:\Users\idoze\Source\Repos\ProjectSQL_100\ProjectSQL_100\obj\Debug\Project.csproj.CoreCompileInputs.cache
 C:\Users\idoze\Source\Repos\ProjectSQL_100\ProjectSQL_100\obj\Debug\ProjectSQL_100.exe
 C:\Users\idoze\Source\Repos\ProjectSQL_100\ProjectSQL_100\obj\Debug\ProjectSQL_100.pdb
+C:\Users\idoze\source\repos\ProjectSQL_100\ProjectSQL_100\obj\Debug\Project.csprojResolveAssemblyReference.cache

@@ -39,7 +39,7 @@ namespace Oledb
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
 
         }

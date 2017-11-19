@@ -45,7 +45,7 @@ namespace Project.Screen
             Add(LoginButton);
             LoginButton.Click += (btn, args) =>
             {
-                if (LoginButton.IsEnabled = ((PasswordInput.Text != "") && (UsernameInput.Text != "")))
+                if ((PasswordInput.Text != "") && (UsernameInput.Text != ""))
                 {
                     if (!Program.Login(UsernameInput.Text, PasswordInput.Text))
                     {
