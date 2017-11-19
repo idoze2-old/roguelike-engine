@@ -15,8 +15,8 @@ namespace Project
     class Program
     { 
         #region Globals
-        public const int Width = 80;
-        public const int Height = 25;
+        public const int Width = 160;
+        public const int Height = 50;
         public const double _delay = 2;
         public const string Font = "Cheepicus12.font";
         public static int ticks = 0;
@@ -26,8 +26,7 @@ namespace Project
         #endregion
         #region Entry Point
         static void Main(string[] args)
-        {
-            //SQL();
+        { 
             StartEngine();
         }
         #endregion 
