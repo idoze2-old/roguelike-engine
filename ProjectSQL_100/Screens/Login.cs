@@ -17,7 +17,7 @@ namespace Project.Screen
         SadConsole.Controls.Button LoginButton;
         SadConsole.Controls.Button RegisterButton;
         SadConsole.Themes.InputBoxTheme InpTheme;
-        int ControlSize = 6;
+        int ControlSize = 7;
         public Login(int Width, int Height) : base(Width, Height)
         {
             textSurface.Font = Global.LoadFont(Program.Font).GetFont(Font.FontSizes.Two);

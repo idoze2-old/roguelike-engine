@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 
-namespace Project.Components
+namespace DAL.Component
 {
     public class Map : Component
     {

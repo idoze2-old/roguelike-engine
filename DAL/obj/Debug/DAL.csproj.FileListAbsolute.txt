@@ -1,0 +1,8 @@
+C:\Users\idoze\source\repos\ProjectSQL_100\DAL\bin\Debug\GameDB.accdb
+C:\Users\idoze\source\repos\ProjectSQL_100\DAL\bin\Debug\DAL.exe.config
+C:\Users\idoze\source\repos\ProjectSQL_100\DAL\bin\Debug\DAL.exe
+C:\Users\idoze\source\repos\ProjectSQL_100\DAL\bin\Debug\DAL.pdb
+C:\Users\idoze\source\repos\ProjectSQL_100\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\idoze\source\repos\ProjectSQL_100\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\idoze\source\repos\ProjectSQL_100\DAL\obj\Debug\DAL.exe
+C:\Users\idoze\source\repos\ProjectSQL_100\DAL\obj\Debug\DAL.pdb

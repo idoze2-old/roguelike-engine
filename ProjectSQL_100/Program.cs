@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Oledb;
 // SadConsole Is A Monogame Based Console
 using Console = SadConsole.Console;
 using SadConsole;
-
+using DAL;
+using DAL.Component;
 
 namespace Project
 {
     class Program
     { 
         #region Globals
-        public const int Width = 160;
+        public const int Width = 100;
         public const int Height = 50;
         public const double _delay = 2;
         public const string Font = "Cheepicus12.font";
         public static int ticks = 0;
         public static Engine.ScrollConsole BG;
         public static Console PlayerConsole;
-        public static Components.User User;
+        public static User User;
         #endregion
         #region Entry Point
         static void Main(string[] args)
@@ -112,7 +112,7 @@ namespace Project
         {
             try
             {
-                User = DAL.GetUser(username, password);
+                User = Methods.GetUser(username, password);
                 SadConsole.Global.CurrentScreen = BG;
                 return true;
             }
@@ -127,96 +127,13 @@ namespace Project
             try
             {
                 
-                return DAL.AddUser(username, password); 
+                return Methods.AddUser(username, password); 
             }
             catch (Exception e)
             {
                 return false;
             }
         }
-        #region SQLMode
-        public static void SQL()
-        {
-            bool SQL = true;
-            string str = "";
-            System.Console.Clear();
-            System.Console.ForegroundColor = ConsoleColor.Red;
-            System.Console.Write("SQL Mode ");
-            System.Console.ResetColor();
-            while (SQL)
-            {
-                System.Console.WriteLine("---------");
-                System.Console.WriteLine(str);
-                System.Console.ForegroundColor = ConsoleColor.Yellow;
-                System.Console.Write("> ");
-                System.Console.ResetColor();
-                str = System.Console.ReadLine();
-                try
-                {
-                    if (str == "")
-                    {
-                        SQL = false;
-                    }
-                    else if(str.ToLower().Contains("adduser"))
-                    {
-                        string UName = "";
-                        string PWord = "";
-                        for (int i = 0; i < 3; i++)
-                        {
-                            UName += (Global.Random.Next(10).ToString());
-                            PWord += (Global.Random.Next(10).ToString());
-                        }
-                        System.Console.ForegroundColor = ConsoleColor.Yellow;
-                            System.Console.Write(DAL.AddUser(UName,PWord)+"\n");
-                            System.Console.ResetColor();
-                        
-                    }
-                    else if (str.ToLower().Contains("select"))
-                    {
-                        System.Data.DataTable Table = oledbhelper.GetTable(str);
-                        foreach (System.Data.DataColumn Col in Table.Columns)
-                        {
-                            System.Console.ForegroundColor = ConsoleColor.Cyan;
-                            System.Console.Write("{0,15}|", Col.ColumnName.ToString());
-                            System.Console.ResetColor();
-                        }
-                        System.Console.Write("\n");
-                        foreach (System.Data.DataRow Row in Table.Rows)
-                        {
-                            foreach (var item in Row.ItemArray)
-                            {
-                                System.Console.Write("{0,15}|", item.ToString());
-                            }
-                            System.Console.Write("\n");
-                        }
-                    }
-                    else
-                    {
-                        oledbhelper.Execute(str);
-                        System.Console.ForegroundColor = ConsoleColor.Green;
-                        System.Console.Write("Success. ");
-                        System.Console.ResetColor();
-                    }
-                    //System.Console.ReadLine();
-                }
-                catch (Exception e)
-                {
-                    //throw e;
-                    if (str == "")
-                    {
-                        SQL = false;
-                    }
-                    else
-                    {
-                        System.Console.ForegroundColor = ConsoleColor.Red;
-                        System.Console.Write("Invalid. ");
-                        System.Console.WriteLine(e.Message);
-                        System.Console.ResetColor();
-                     //   System.Console.ReadLine();
-                    }
-                }
-            }
-        } 
-        #endregion
+        
     }
 }
