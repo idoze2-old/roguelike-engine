@@ -7,7 +7,7 @@ using SadConsole;
 using Console = SadConsole.Console;
 using Microsoft.Xna.Framework;
 
-namespace Project.Engine
+namespace Engine.Classes
 {
     public class ScrollConsole : SadConsole.Console
     {

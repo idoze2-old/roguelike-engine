@@ -18,7 +18,7 @@ namespace DAL
             get
             {
 
-                return @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\idoze\source\repos\ProjectSQL_100\ProjectSQL_100\GameDB.accdb";
+                return @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\idoze\source\repos\ProjectSQL_100\DAL\GameDB.accdb";
             }
         }
         public static void Execute(string com)

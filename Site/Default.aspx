@@ -24,7 +24,7 @@
                 Cotash is a Guiness-World Record winner for the hardest game ever. Reach the leaderboards and Get Famous.
             </p>
             <p>
-                <a class="btn btn-default" runat="server" href="~/">Leaderboards &raquo;</a>
+                <a class="btn btn-default" runat="server" href="~/Leaderboard">Leaderboards &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">

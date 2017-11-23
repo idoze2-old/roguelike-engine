@@ -8,7 +8,7 @@ using Console = SadConsole.Console;
 using SadConsole;
 using Microsoft.Xna.Framework;
 
-namespace Project.Screen
+namespace Engine.Screen
 {
     internal class Login : ControlsConsole
     {
@@ -58,6 +58,11 @@ namespace Project.Screen
                         Print(LoginButton.Position.X, LoginButton.Position.Y + 1, "Username Or Password", Color.Red);
                         Print(LoginButton.Position.X, LoginButton.Position.Y + 2, "Incorrect.", Color.Red);
                         Add(RegisterButton);
+                        
+                    }
+                    else
+                    {
+                        parentConsole.Children.Remove(this);
                     }
                 }
             };
@@ -65,7 +70,7 @@ namespace Project.Screen
             #region RegisterButton
 
             RegisterButton = new SadConsole.Controls.Button(8);
-            RegisterButton.Position = new Point(LoginButton.Position.X, LoginButton.Position.Y+3);
+            RegisterButton.Position = new Point(LoginButton.Position.X+9, LoginButton.Position.Y);
             RegisterButton.ShowEnds = false;
             RegisterButton.Text = "Register";
             RegisterButton.TextAlignment = System.Windows.HorizontalAlignment.Center;

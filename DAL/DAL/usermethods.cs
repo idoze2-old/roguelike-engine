@@ -8,19 +8,22 @@ using System.Data;
 
 namespace DAL
 {
-    public static class Methods
+    public static class UserMethods
     {
 
         public static DataTable GetAll()
         {
             return oledbhelper.GetTable("Select * From Character");
         }
+        #region Data Pulling
         public static Component.User GetUser(string username, string password)
         {
             DataTable Data = oledbhelper.GetTable("Select UserID From Users Where UName='" + username + "' AND PWord='" + password + "'");
             DataRow DataR = Data.Rows[0];
             return new Component.User(int.Parse(DataR["UserID"].ToString()));
         }
+        #endregion
+        #region Data Validation
         public static bool UserExists(string Username, string Password)
         {
             try
@@ -33,6 +36,9 @@ namespace DAL
                 return false;
             }
         }
+        #endregion
+        #region Data Modification
+        #region Add
         public static bool AddUser(string Username, string Password)
         {
             try
@@ -48,11 +54,16 @@ namespace DAL
                     throw new Exception("User Exists");
                 }
             }
-            catch 
+            catch
             {
                 return false;
             }
         }
+        #endregion
+        #region Update
+
+        #endregion
+        #endregion
 
     }
 }

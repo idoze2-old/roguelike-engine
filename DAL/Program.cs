@@ -47,7 +47,7 @@ namespace DAL
                             PWord += (Random.Next(10).ToString());
                         }
                         System.Console.ForegroundColor = ConsoleColor.Yellow;
-                        System.Console.Write(Methods.AddUser(UName, PWord) + "\n");
+                        System.Console.Write(UserMethods.AddUser(UName, PWord) + "\n");
                         System.Console.ResetColor();
 
                     }

@@ -10,18 +10,14 @@ using SadConsole;
 using DAL;
 using DAL.Component;
 
-namespace Project
+namespace Engine
 {
     class Program
     { 
         #region Globals
         public const int Width = 100;
         public const int Height = 50;
-        public const double _delay = 2;
         public const string Font = "Cheepicus12.font";
-        public static int ticks = 0;
-        public static Engine.ScrollConsole BG;
-        public static Console PlayerConsole;
         public static User User;
         #endregion
         #region Entry Point
@@ -50,29 +46,12 @@ namespace Project
         #region Game Casting
         private static void Init()
         {
-            ticks = 0;
-            //SadConsole.Settings.ToggleFullScreen();
             SadConsole.Global.CurrentScreen.Children.Add(new Screen.Login(Width, Height));
-            Global.CurrentScreen.Children.Reverse();
-            #region GameConsoles
-            #region BG
-            BG = new Engine.ScrollConsole(Width * 2, Height * 2, Width, Height);
-            BG.FillWithRandomGarbage();
-            BG.Fill(Color.FromNonPremultiplied(127, 127, 127, 127), Color.FromNonPremultiplied(0, 255, 255, 127), null);
-            #endregion
-            #region PlayerConsole
-            PlayerConsole = new Console(1, 1);
-            PlayerConsole.Position = new Point(Width / 2, Height / 2);
-            PlayerConsole.Print(0, 0, "@", Color.Yellow, Color.Transparent);
-            BG.Children.Add(PlayerConsole);
-            #endregion 
-            #endregion
         }
         #endregion
         #region Game Logic
         private static void Update(GameTime time)
         {
-            ticks++;
             #region KeyHandling
             if (SadConsole.Global.KeyboardState.IsKeyReleased(Microsoft.Xna.Framework.Input.Keys.F5))
             {
@@ -82,38 +61,18 @@ namespace Project
             {
                 SadConsole.Game.Instance.Exit();
             }
-            #region Movement
-            if ((SadConsole.Global.KeyboardState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Right)) || (SadConsole.Global.KeyboardState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.D)))
-            {
-                if (ticks % _delay == 0)
-                    BG.Scroll(1, 0);
-            }
-            if ((SadConsole.Global.KeyboardState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Left)) || (SadConsole.Global.KeyboardState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.A)))
-            {
-                if (ticks % _delay == 0)
-                    BG.Scroll(-1, 0);
-            }
-            if ((SadConsole.Global.KeyboardState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Up)) || (SadConsole.Global.KeyboardState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.W)))
-            {
-                if (ticks % _delay == 0)
-                    BG.Scroll(0, -1);
-            }
-            if ((SadConsole.Global.KeyboardState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Down)) || (SadConsole.Global.KeyboardState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.S)))
-            {
-                if (ticks % _delay == 0)
-                    BG.Scroll(0, 1);
+            #endregion
+            ((Console)SadConsole.Global.CurrentScreen.Children.Last()).ProcessKeyboard(Global.KeyboardState);
 
-            }
-            #endregion
-            #endregion
         }
         #endregion
         public static bool Login(string username, string password)
         {
             try
             {
-                User = Methods.GetUser(username, password);
-                SadConsole.Global.CurrentScreen = BG;
+                User = UserMethods.GetUser(username, password);
+                
+                Global.CurrentScreen.Children.Add(new Screen.PlayArea(Width * 2, Height * 2, Width, Height));
                 return true;
             }
             catch (Exception e)
@@ -127,13 +86,14 @@ namespace Project
             try
             {
                 
-                return Methods.AddUser(username, password); 
+                return UserMethods.AddUser(username, password); 
             }
             catch (Exception e)
-            {
+            { 
                 return false;
             }
         }
         
     }
 }
+

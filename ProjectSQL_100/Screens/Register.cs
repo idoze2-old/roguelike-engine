@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SadConsole;
 using Microsoft.Xna.Framework;
 
-namespace Project.Screen
+namespace Engine.Screen
 {
     class Register:ControlsConsole
     {
@@ -56,6 +56,7 @@ namespace Project.Screen
                     else
                     {
                         parentConsole.Children.Remove(this);
+                        SadConsole.Global.FocusedConsoles.Pop(this);
                     }
                 }
             };
