@@ -20,14 +20,8 @@ namespace Engine
         public const string Font = "Cheepicus12.font";
         public static User User;
         #endregion
-        #region Entry Point
-        static void Main(string[] args)
-        { 
-            StartEngine();
-        }
-        #endregion 
         #region Engine Logic 
-        static void StartEngine()
+        static void Main(string[] args)
         {
             // Start Instance Of a 'Game' - A Monogame Method
             SadConsole.Game.Create(Font, Width, Height);
@@ -43,7 +37,7 @@ namespace Engine
            
         }
         #endregion
-        #region Game Casting
+        #region Engine Initialization
         private static void Init()
         {
             SadConsole.Global.CurrentScreen.Children.Add(new Screen.Login(Width, Height));
@@ -62,16 +56,17 @@ namespace Engine
                 SadConsole.Game.Instance.Exit();
             }
             #endregion
-            ((Console)SadConsole.Global.CurrentScreen.Children.Last()).ProcessKeyboard(Global.KeyboardState);
+             ((Console)SadConsole.Global.CurrentScreen.Children.Last()).ProcessKeyboard(Global.KeyboardState);
 
         }
         #endregion
+        #region Login
         public static bool Login(string username, string password)
         {
             try
             {
                 User = UserMethods.GetUser(username, password);
-                
+
                 Global.CurrentScreen.Children.Add(new Screen.PlayArea(Width * 2, Height * 2, Width, Height));
                 return true;
             }
@@ -85,15 +80,16 @@ namespace Engine
         {
             try
             {
-                
-                return UserMethods.AddUser(username, password); 
+
+                return UserMethods.AddUser(username, password);
             }
             catch (Exception e)
-            { 
+            {
                 return false;
             }
-        }
-        
+        } 
+        #endregion
+
     }
 }
 

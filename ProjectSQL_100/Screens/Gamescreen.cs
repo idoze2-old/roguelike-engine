@@ -17,13 +17,12 @@ namespace Engine.Screen
             #endregion
             #region PlayerConsole
             SadConsole.Console PlayerConsole = new SadConsole.Console(1, 1);
-            PlayerConsole.Position = new Point(Width / 2, Height / 2);
+            PlayerConsole.Position = new Point(RWidth / 2, RHeight / 2);
             PlayerConsole.Print(0, 0, "@", Color.Yellow, Color.Transparent);
             Children.Add(PlayerConsole);
             #endregion
-
             #region KeyboardHandler Hook
-            KeyboardHandler += (cons, inp) =>
+            KeyboardHandler = (cons, inp) =>
                 {
                     return HandleKeyboard(inp);
                 }; 
