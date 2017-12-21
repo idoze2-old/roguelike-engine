@@ -22,6 +22,36 @@ namespace DAL
             DataRow DataR = Data.Rows[0];
             return new Component.User(int.Parse(DataR["UserID"].ToString()));
         }
+        public static Component.Map GetMap(int MapID)
+        {
+            Component.Map RetMap = new Component.Map(MapID);
+            return RetMap;
+        }
+        public static Component.Map[] GetMapsBySaveFile(int SaveFileID)
+        {
+            
+            DataTable Data = oledbhelper.GetTable("Select [MapID] from Map Where SaveFileID = " + SaveFileID + " ORDER BY Depth ASC");
+            Component.Map[] maps = new Component.Map[Data.Rows.Count];
+            int count = 0;
+            foreach (DataRow map in Data.Rows)
+            {
+                Component.Map m = new Component.Map(int.Parse(map["MapID"].ToString()));
+                maps[count++] = m;
+            }
+            return maps;
+        }
+        public static Component.SaveFile[] GetSaveFilesByUser(int UserID)
+        {
+            DataTable Data = oledbhelper.GetTable("Select [SaveFileID] from UserToSaveFile Where UserID = " + UserID);
+            Component.SaveFile[] SaveFiles = new Component.SaveFile[Data.Rows.Count];
+            int count = 0;
+            foreach (DataRow SaveFile in Data.Rows)
+            {
+                Component.SaveFile sf = new Component.SaveFile(int.Parse(SaveFile["SaveFileID"].ToString()));
+                SaveFiles[count++] = sf;
+            }
+            return SaveFiles;
+        }
         #endregion
         #region Data Validation
         public static bool UserExists(string Username, string Password)

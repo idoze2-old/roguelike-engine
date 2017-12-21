@@ -1,0 +1,15 @@
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\bin\Debug\GameDB.accdb
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\bin\Debug\Mapper.exe.config
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\bin\Debug\Mapper.exe
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\bin\Debug\Mapper.pdb
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\bin\Debug\DAL.exe
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\bin\Debug\DAL.pdb
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\bin\Debug\DAL.exe.config
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\obj\Debug\Mapper.csprojResolveAssemblyReference.cache
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\obj\Debug\Mapper.LoginForm.resources
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\obj\Debug\Mapper.Properties.Resources.resources
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\obj\Debug\Mapper.csproj.GenerateResource.Cache
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\obj\Debug\Mapper.csproj.CoreCompileInputs.cache
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\obj\Debug\Mapper.exe
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\obj\Debug\Mapper.pdb
+C:\Users\idoze\source\repos\ProjectSQL_100\Mapper\obj\Debug\Mapper.MapScreen.resources
