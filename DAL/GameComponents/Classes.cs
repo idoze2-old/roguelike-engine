@@ -34,6 +34,10 @@ namespace DAL.Component
         {
 
         }
+        public override string ToString()
+        {
+            return "SaveFile"+ID.ToString();
+        }
     }
     
 }

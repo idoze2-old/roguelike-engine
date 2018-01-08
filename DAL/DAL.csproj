@@ -49,6 +49,8 @@
     <Compile Include="DAL\oledbhelper.cs" />
     <Compile Include="GameComponents\Classes.cs" />
     <Compile Include="GameComponents\Map.cs" />
+    <Compile Include="GameComponents\MapObject.cs" />
+    <Compile Include="GameComponents\Tile.cs" />
     <Compile Include="GameComponents\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

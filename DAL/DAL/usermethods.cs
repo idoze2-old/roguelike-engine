@@ -22,6 +22,7 @@ namespace DAL
             DataRow DataR = Data.Rows[0];
             return new Component.User(int.Parse(DataR["UserID"].ToString()));
         }
+        #region Map Pulling
         public static Component.Map GetMap(int MapID)
         {
             Component.Map RetMap = new Component.Map(MapID);
@@ -29,7 +30,7 @@ namespace DAL
         }
         public static Component.Map[] GetMapsBySaveFile(int SaveFileID)
         {
-            
+
             DataTable Data = oledbhelper.GetTable("Select [MapID] from Map Where SaveFileID = " + SaveFileID + " ORDER BY Depth ASC");
             Component.Map[] maps = new Component.Map[Data.Rows.Count];
             int count = 0;
@@ -40,6 +41,8 @@ namespace DAL
             }
             return maps;
         }
+        #endregion
+        #region SaveFile Pulling
         public static Component.SaveFile[] GetSaveFilesByUser(int UserID)
         {
             DataTable Data = oledbhelper.GetTable("Select [SaveFileID] from UserToSaveFile Where UserID = " + UserID);
@@ -52,6 +55,22 @@ namespace DAL
             }
             return SaveFiles;
         }
+        #endregion
+        #region Tile Pulling
+        public static Component.Tile[] GetTiles()
+        {
+            List<Component.Tile> Tiles = new List<Component.Tile>();
+            DataTable Data = oledbhelper.GetTable("Select * From Tile");
+            foreach (DataRow DataR in Data.Rows)
+            {
+                int ID = int.Parse(DataR["TileID"].ToString());
+                string TileName = DataR["TileName"].ToString();
+                char Glyph = DataR["Glyph"].ToString()[0];
+                Tiles.Add(new Component.Tile(ID, TileName, Glyph));
+            }
+            return Tiles.ToArray();
+        } 
+        #endregion
         #endregion
         #region Data Validation
         public static bool UserExists(string Username, string Password)
