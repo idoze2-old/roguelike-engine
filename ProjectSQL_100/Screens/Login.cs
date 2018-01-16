@@ -70,7 +70,7 @@ namespace Engine.Screen
             #region RegisterButton
 
             RegisterButton = new SadConsole.Controls.Button(8);
-            RegisterButton.Position = new Point(LoginButton.Position.X+9, LoginButton.Position.Y);
+            RegisterButton.Position = new Point(LoginButton.Position.X, LoginButton.Position.Y+3);
             RegisterButton.ShowEnds = false;
             RegisterButton.Text = "Register";
             RegisterButton.TextAlignment = System.Windows.HorizontalAlignment.Center;

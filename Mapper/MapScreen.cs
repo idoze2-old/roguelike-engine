@@ -59,9 +59,11 @@ namespace Mapper
             foreach (PictureBox Pbox in LayerPboxes)
             {
                 Pbox.Visible = true;
+                Pbox.BorderStyle = BorderStyle.FixedSingle;
                 Pbox.Location = new Point(0, 0);
                 Pbox.MouseMove += Print_box_MouseMove;
                 PrintArea_panel.Controls.Add(Pbox);
+                Pbox.BringToFront();
             }
         }
         private void Print_box_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -69,6 +71,7 @@ namespace Mapper
             Point P = new Point(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
             if (!(P.X < 0 || P.Y < 0 || P.X > Print_box.Bounds.Width || P.Y > Print_box.Bounds.Bottom))
             {
+                CellMarker.Show();
                 HoveredCellLoc = new Point((P.X / 8), (P.Y / 16));
                 CellMarker.Location = new Point(HoveredCellLoc.X * 8, HoveredCellLoc.Y * 16);
                 CellMarker.BringToFront();
@@ -93,7 +96,6 @@ namespace Mapper
             Layers.Add(obj);
             LoadMap();
         }
-
         private void CellMarker_Click(object sender, EventArgs e)
         {
             Print_box_Click(sender, e);

@@ -30,18 +30,18 @@ namespace DAL.Component
             }
             catch {  return null; }
         }
-        
         public Map(int id) : base(id)
         {
             Load();
         }
         private void Load()
         {
-            DataTable data = oledbhelper.GetTable("SELECT TtM.*,T.Glyph FROM TileToMap TtM INNER JOIN Tile T ON((T.TileID = TtM.TileID) AND(TtM.MapID = "+ID.ToString()+"));");
+            string com = "SELECT TtM.*,T.Glyph FROM TileToMap TtM INNER JOIN Tile T ON ((T.TileID = TtM.TileID) AND (TtM.MapID = " + ID.ToString() + "));";
+            DataTable data = oledbhelper.GetTable(com);
             try
             {
                 Objects = new List<MapObject>[int.Parse(data.Rows[0]["PosZ"].ToString())+1];
-            }
+            } 
             catch
             {
                 throw;
@@ -73,7 +73,6 @@ namespace DAL.Component
             catch
             {
                 Objects[Obj.Z] = new List<MapObject>();
-                
             }
             finally
             {
@@ -89,6 +88,5 @@ namespace DAL.Component
             }
             
         }
-
     }
 }

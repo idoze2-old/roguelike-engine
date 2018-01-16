@@ -12,13 +12,14 @@ using DAL.Component;
 
 namespace Engine
 {
-    class Program
+   public class Program
     { 
         #region Globals
         public const int Width = 100;
         public const int Height = 50;
         public const string Font = "Cheepicus12.font";
         public static User User;
+        public static SaveFile SaveFile;
         #endregion
         #region Engine Logic 
         static void Main(string[] args)
@@ -67,7 +68,7 @@ namespace Engine
             {
                 User = UserMethods.GetUser(username, password);
 
-                Global.CurrentScreen.Children.Add(new Screen.PlayArea(Width * 2, Height * 2, Width, Height));
+                Global.CurrentScreen.Children.Add(new Screen.SaveFilePickscreen(Width, Height));
                 return true;
             }
             catch (Exception e)
@@ -81,7 +82,13 @@ namespace Engine
             try
             {
 
-                return UserMethods.AddUser(username, password);
+                if (UserMethods.AddUser(username, password))
+                {
+                    Login(username, password);
+                    return true;
+                }
+                    return false;
+
             }
             catch (Exception e)
             {

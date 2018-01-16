@@ -22,6 +22,7 @@ namespace DAL
             DataRow DataR = Data.Rows[0];
             return new Component.User(int.Parse(DataR["UserID"].ToString()));
         }
+        
         #region Map Pulling
         public static Component.Map GetMap(int MapID)
         {

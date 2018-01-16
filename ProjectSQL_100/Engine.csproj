@@ -81,6 +81,7 @@
     <Compile Include="Screens\Gamescreen.cs" />
     <Compile Include="Screens\Login.cs" />
     <Compile Include="Screens\Register.cs" />
+    <Compile Include="Screens\SaveFilePickscreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
